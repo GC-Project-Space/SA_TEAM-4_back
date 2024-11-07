@@ -1,10 +1,15 @@
 services:
   db:
     image: mysql
+    env_file:
+      - .env
     environment:
-      SPRING_DATASOURCE_URL: ${RDS_URL}
-      SPRING_DATASOURCE_USERNAME: ${RDS_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${RDS_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 3306:3306
 
   blue:
     container_name: blue
@@ -13,6 +18,8 @@ services:
       - 8080
     ports:
       - 8081:8080
+    env_file:
+      - .env
     environment:
       SPRING_DATASOURCE_URL: ${RDS_URL}
       SPRING_DATASOURCE_USERNAME: ${RDS_USERNAME}
@@ -25,6 +32,8 @@ services:
       - 8080
     ports:
       - 8082:8080
+    env_file:
+      - .env
     environment:
       SPRING_DATASOURCE_URL: ${RDS_URL}
       SPRING_DATASOURCE_USERNAME: ${RDS_USERNAME}
