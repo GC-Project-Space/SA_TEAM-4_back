@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getVersion() {
-        return "이 서버는 V1입니다. 빌드 테스트입니닷!!!";
+        return "가천대학교 시스템아키텍쳐 가마고치 서버입니다.";
     }
 
     @GetMapping("/profile")
