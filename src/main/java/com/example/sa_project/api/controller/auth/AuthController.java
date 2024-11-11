@@ -1,6 +1,6 @@
 package com.example.sa_project.api.controller.auth;
 
-import com.example.sa_project.api.controller.auth.dto.AuthRequest;
+import com.example.sa_project.api.controller.auth.request.AuthRequest;
 import com.example.sa_project.api.service.auth.response.AuthResponse;
 import com.example.sa_project.domain.user.User;
 import com.example.sa_project.domain.user.UserRepository;

@@ -1,8 +1,4 @@
-package com.example.sa_project.dto.response;
-
-import java.util.List;
-
-import com.example.sa_project.dto.MissionProgress;
+package com.example.sa_project.api.service.mission.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProgressResponse {
+public class RewardResponse {
     private String status;
-    private List<MissionProgress> missions;
+    private int level;
+    private int experiencePoint;
 }

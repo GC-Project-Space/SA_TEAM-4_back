@@ -1,4 +1,4 @@
-package com.example.sa_project.service;
+package com.example.sa_project.api.service.mission;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,18 +6,18 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.sa_project.dto.MissionProgress;
-import com.example.sa_project.dto.response.ClearResponse;
-import com.example.sa_project.dto.response.ProgressResponse;
-import com.example.sa_project.dto.response.RewardResponse;
-import com.example.sa_project.entity.AllMission;
-import com.example.sa_project.entity.CompleteMission;
-import com.example.sa_project.entity.Mission;
-import com.example.sa_project.entity.UserProgress;
-import com.example.sa_project.repository.AllMissionRepository;
-import com.example.sa_project.repository.CompleteMissionRepository;
-import com.example.sa_project.repository.MissionRepository;
-import com.example.sa_project.repository.UserProgressRepository;
+import com.example.sa_project.api.service.mission.response.mission.MissionProgress;
+import com.example.sa_project.api.service.mission.response.ClearResponse;
+import com.example.sa_project.api.service.mission.response.ProgressResponse;
+import com.example.sa_project.api.service.mission.response.RewardResponse;
+import com.example.sa_project.domain.mission.AllMission;
+import com.example.sa_project.domain.mission.CompleteMission;
+import com.example.sa_project.domain.mission.Mission;
+import com.example.sa_project.domain.mission.UserProgress;
+import com.example.sa_project.domain.mission.repository.AllMissionRepository;
+import com.example.sa_project.domain.mission.repository.CompleteMissionRepository;
+import com.example.sa_project.domain.mission.repository.MissionRepository;
+import com.example.sa_project.domain.mission.repository.UserProgressRepository;
 
 @Service
 public class MissionService {

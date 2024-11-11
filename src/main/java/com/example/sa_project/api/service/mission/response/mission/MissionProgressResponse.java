@@ -1,4 +1,4 @@
-package com.example.sa_project.dto;
+package com.example.sa_project.api.service.mission.response.mission;
 
 import java.util.List;
 

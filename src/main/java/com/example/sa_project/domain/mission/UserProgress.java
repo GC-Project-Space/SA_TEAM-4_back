@@ -1,4 +1,4 @@
-package com.example.sa_project.entity;
+package com.example.sa_project.domain.mission;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,17 +10,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "all_mission")
+@Table(name = "user_progress")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AllMission {
-    
-    @Column(name = "user_id")
-    private String userId;
-
+public class UserProgress {
     @Id
-    @Column(name = "mission_id")
-    private int missionId;
+    @Column(name="user_id")
+    private String id;
+    
+    @Column(name="user_level")
+    private int level;
+
+    @Column(name="experience_point")
+    private int experiencePoint;
 }

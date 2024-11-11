@@ -1,4 +1,4 @@
-package com.example.sa_project.dto.request;
+package com.example.sa_project.api.controller.mission.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

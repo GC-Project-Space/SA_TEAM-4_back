@@ -1,4 +1,4 @@
-package com.example.sa_project.api.controller.auth.dto;
+package com.example.sa_project.api.controller.auth.request;
 
 public class AuthRequest {
     private String username;

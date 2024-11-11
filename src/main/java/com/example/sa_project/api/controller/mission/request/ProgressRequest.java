@@ -1,4 +1,4 @@
-package com.example.sa_project.dto.response;
+package com.example.sa_project.api.controller.mission.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RewardResponse {
-    private String status;
-    private int level;
-    private int experiencePoint;
+public class ProgressRequest { 
+    private String userId;
 }
