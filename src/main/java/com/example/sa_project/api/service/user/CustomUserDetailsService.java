@@ -1,4 +1,4 @@
-package com.example.sa_project.api.service.auth;
+package com.example.sa_project.api.service.user;
 
 import com.example.sa_project.domain.user.User;
 import com.example.sa_project.domain.user.UserRepository;

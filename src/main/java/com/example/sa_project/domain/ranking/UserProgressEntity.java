@@ -1,4 +1,4 @@
-package com.example.sa_project.Entity;
+package com.example.sa_project.domain.ranking;
 
 import jakarta.persistence.*;
 

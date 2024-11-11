@@ -1,6 +1,7 @@
-package com.example.sa_project.Ranking;
+package com.example.sa_project.api.controller.ranking;
 
-import com.example.sa_project.Entity.UserProgressEntity;
+import com.example.sa_project.api.service.ranking.RankingService;
+import com.example.sa_project.api.service.ranking.response.UserProgressDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

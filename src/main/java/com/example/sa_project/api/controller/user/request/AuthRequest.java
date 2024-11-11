@@ -1,4 +1,4 @@
-package com.example.sa_project.api.controller.auth.request;
+package com.example.sa_project.api.controller.user.request;
 
 public class AuthRequest {
     private String username;

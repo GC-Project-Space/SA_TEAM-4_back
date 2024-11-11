@@ -1,4 +1,4 @@
-package com.example.sa_project.api.service.auth.response;
+package com.example.sa_project.api.service.user.response;
 
 public class AuthResponse {
     private String token;

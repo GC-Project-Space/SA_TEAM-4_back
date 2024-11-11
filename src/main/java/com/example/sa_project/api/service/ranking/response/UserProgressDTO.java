@@ -1,4 +1,4 @@
-package com.example.sa_project.Ranking;
+package com.example.sa_project.api.service.ranking.response;
 
 public class UserProgressDTO {
     public  String name; //user name && major name

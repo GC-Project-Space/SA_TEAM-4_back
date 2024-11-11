@@ -1,7 +1,7 @@
-package com.example.sa_project.api.controller.auth;
+package com.example.sa_project.api.controller.user;
 
-import com.example.sa_project.api.controller.auth.request.AuthRequest;
-import com.example.sa_project.api.service.auth.response.AuthResponse;
+import com.example.sa_project.api.controller.user.request.AuthRequest;
+import com.example.sa_project.api.service.user.response.AuthResponse;
 import com.example.sa_project.domain.user.User;
 import com.example.sa_project.domain.user.UserRepository;
 import com.example.sa_project.util.JwtUtil;
