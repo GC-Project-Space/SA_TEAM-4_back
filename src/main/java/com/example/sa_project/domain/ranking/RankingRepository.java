@@ -7,17 +7,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface RankingRepository extends JpaRepository<UserProgressEntity, Long> {
 
-    @Query("SELECT new com.example.sa_project.Ranking.UserProgressDTO(u.user_name, u.experience_points) " +
-            "FROM UserProgressEntity u ORDER BY u.experience_points DESC")
+    @Query("SELECT new com.example.sa_project.api.service.ranking.response.UserProgressDTO(u.userName, u.experiencePoints) " +
+            "FROM UserProgressEntity u ORDER BY u.experiencePoints DESC")
     List<UserProgressDTO> findAllWithUserInfoSorted();
 
-    @Query("SELECT new com.example.sa_project.Ranking.UserProgressDTO(u.major, SUM(u.experience_points)) " +
-            "FROM UserProgressEntity u GROUP BY u.major ORDER BY SUM(u.experience_points) DESC")
+    @Query("SELECT new com.example.sa_project.api.service.ranking.response.UserProgressDTO(u.major, SUM(u.experiencePoints)) " +
+            "FROM UserProgressEntity u GROUP BY u.major ORDER BY SUM(u.experiencePoints) DESC")
     List<UserProgressDTO> findMajorInfoSorted();
 }
-
-

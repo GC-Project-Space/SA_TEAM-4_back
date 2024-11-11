@@ -7,13 +7,13 @@ import jakarta.persistence.*;
 public class UserProgressEntity {
 
     @Id
-    public String user_id;
+    public String userId;
 
     @Column
-    public Long experience_points;
+    public Long experiencePoints;
 
     @Column
-    public String user_name;
+    public String userName;
 
     @Column
     public String major;
