@@ -1,4 +1,4 @@
-package com.example.sa_project.entity;
+package com.example.sa_project.domain.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.sa_project.api.controller;
+package com.example.sa_project.api.controller.home;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;

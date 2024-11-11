@@ -1,10 +1,9 @@
-package com.example.sa_project.controller;
+package com.example.sa_project.api.controller.auth;
 
-import com.example.sa_project.dto.AuthRequest;
-import com.example.sa_project.dto.AuthResponse;
-import com.example.sa_project.entity.User;
-import com.example.sa_project.repository.UserRepository;
-import com.example.sa_project.service.CustomUserDetailsService;
+import com.example.sa_project.api.controller.auth.dto.AuthRequest;
+import com.example.sa_project.api.service.auth.response.AuthResponse;
+import com.example.sa_project.domain.user.User;
+import com.example.sa_project.domain.user.UserRepository;
 import com.example.sa_project.util.JwtUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,7 +1,7 @@
-package com.example.sa_project.service;
+package com.example.sa_project.api.service.auth;
 
-import com.example.sa_project.entity.User;
-import com.example.sa_project.repository.UserRepository;
+import com.example.sa_project.domain.user.User;
+import com.example.sa_project.domain.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
