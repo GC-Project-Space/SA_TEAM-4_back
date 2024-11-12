@@ -1,7 +1,9 @@
 package com.example.sa_project.domain.mission;
 
+import com.example.sa_project.domain.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,11 +18,8 @@ import lombok.Setter;
 public class UserProgress {
 
     @Id
-    private Long id;
-    
-    private int level;
+    @OneToOne(mappedBy = "user")
+    private User userId;
 
     private int experiencePoint;
-
-    private String major;
 }

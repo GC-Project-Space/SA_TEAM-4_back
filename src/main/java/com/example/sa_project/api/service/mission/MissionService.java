@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.sa_project.api.service.mission.response.ClearResponse;
@@ -13,12 +12,10 @@ import com.example.sa_project.api.service.mission.response.ProgressResponse;
 import com.example.sa_project.api.service.mission.response.ResetResponse;
 import com.example.sa_project.api.service.mission.response.RewardResponse;
 import com.example.sa_project.api.service.mission.response.mission.MissionProgress;
-import com.example.sa_project.domain.mission.AllMission;
-import com.example.sa_project.domain.mission.CompleteMission;
+import com.example.sa_project.domain.mission.MyMission;
 import com.example.sa_project.domain.mission.Mission;
 import com.example.sa_project.domain.mission.UserProgress;
 import com.example.sa_project.domain.mission.repository.AllMissionRepository;
-import com.example.sa_project.domain.mission.repository.CompleteMissionRepository;
 import com.example.sa_project.domain.mission.repository.MissionRepository;
 import com.example.sa_project.domain.mission.repository.UserProgressRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,21 +31,21 @@ public class MissionService {
     private final UserProgressRepository uProgressRepository;
 
     public ProgressResponse getMissionProgress(Long userId) {
-        List<AllMission> allMissions = allMissionRepository.findByUserId(userId);
-        System.out.println("All Missions: " + allMissions);
+        List<MyMission> myMissions = allMissionRepository.findByUserId(userId);
+        System.out.println("All Missions: " + myMissions);
 
         List<Integer> completedMissionIds = completeMissionRepository.findByUserId(userId).stream()
                 .map(CompleteMission::getMissionId)
                 .distinct()                      
                 .collect(Collectors.toList());
     
-        List<MissionProgress> missions = allMissions.stream()
-                .map(allMission -> {
-                    Mission mission = missionRepository.findById(allMission.getMissionId()).orElse(null);
+        List<MissionProgress> missions = myMissions.stream()
+                .map(myMission -> {
+                    Mission mission = missionRepository.findById(myMission.getMissionId()).orElse(null);
     
-                    boolean isCleared = completedMissionIds.contains(allMission.getMissionId());
+                    boolean isCleared = completedMissionIds.contains(myMission.getMissionId());
     
-                    return new MissionProgress(mission != null ? mission.getTitle() : "Unknown", allMission.getMissionId(), isCleared);
+                    return new MissionProgress(mission != null ? mission.getTitle() : "Unknown", myMission.getMissionId(), isCleared);
                 })
                 .collect(Collectors.toList());
 
@@ -96,7 +93,7 @@ public class MissionService {
     }
 
     public ResetResponse resetMissions(Long userId){
-        List<AllMission> allUserMissions = allMissionRepository.findByUserId(userId);
+        List<MyMission> allUserMissions = allMissionRepository.findByUserId(userId);
         allMissionRepository.deleteAll(allUserMissions);
 
         List<CompleteMission> completeMissions = completeMissionRepository.findByUserId(userId);
@@ -108,7 +105,7 @@ public class MissionService {
         List<Mission> randomMissions = allMissions.stream().limit(3).collect(Collectors.toList());
 
         for (Mission mission : randomMissions){
-            AllMission newMission = new AllMission(userId, mission.getMissionId());
+            MyMission newMission = new MyMission(userId, mission.getMissionId());
             allMissionRepository.save(newMission);
         }
 
