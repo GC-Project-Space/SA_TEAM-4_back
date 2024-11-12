@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "member")
 public class User {
 
     @Id
@@ -20,7 +21,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String role;
+    private String role ;
 
     @Enumerated(EnumType.STRING)
     private Major major;
