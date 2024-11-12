@@ -1,15 +1,17 @@
 package com.example.sa_project.api.service.mission;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.sa_project.api.service.mission.response.mission.MissionProgress;
 import com.example.sa_project.api.service.mission.response.ClearResponse;
 import com.example.sa_project.api.service.mission.response.ProgressResponse;
+import com.example.sa_project.api.service.mission.response.ResetResponse;
 import com.example.sa_project.api.service.mission.response.RewardResponse;
+import com.example.sa_project.api.service.mission.response.mission.MissionProgress;
 import com.example.sa_project.domain.mission.AllMission;
 import com.example.sa_project.domain.mission.CompleteMission;
 import com.example.sa_project.domain.mission.Mission;
@@ -95,4 +97,23 @@ public class MissionService {
 
         return rewardResponse;
     }
+
+    public ResetResponse resetMissions(String userId){
+        List<AllMission> allUserMissions = allMissionRepository.findByUserId(userId);
+        allMissionRepository.deleteAll(allUserMissions);
+
+        List<Mission> allMissions = missionRepository.findAll();
+
+        Collections.shuffle(allMissions);
+        List<Mission> randomMissions = allMissions.stream().limit(3).collect(Collectors.toList());
+
+        for (Mission mission : randomMissions){
+            AllMission newMission = new AllMission(userId, mission.getMissionId());
+            allMissionRepository.save(newMission);
+        }
+
+        return new ResetResponse("success");
+
+    }
+
 }
