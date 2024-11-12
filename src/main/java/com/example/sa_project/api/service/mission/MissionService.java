@@ -102,7 +102,7 @@ public class MissionService {
         List<AllMission> allUserMissions = allMissionRepository.findByUserId(userId);
         allMissionRepository.deleteAll(allUserMissions);
 
-        List <CompleteMission> completeMissions = completeMissionRepository.findByUserId(userId);
+        List<CompleteMission> completeMissions = completeMissionRepository.findByUserId(userId);
         completeMissionRepository.deleteAll(completeMissions);
 
         List<Mission> allMissions = missionRepository.findAll();
