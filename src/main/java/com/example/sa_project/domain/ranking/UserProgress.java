@@ -1,10 +1,9 @@
-package com.example.sa_project.domain.mission;
+package com.example.sa_project.domain.ranking;
 
 import com.example.sa_project.domain.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

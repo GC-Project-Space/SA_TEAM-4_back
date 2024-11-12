@@ -1,8 +1,8 @@
 package com.example.sa_project.api.service.ranking;
 
 import com.example.sa_project.api.service.ranking.response.UserProgressDTO;
-import com.example.sa_project.domain.mission.UserProgress;
-import com.example.sa_project.domain.mission.repository.UserProgressRepository;
+import com.example.sa_project.domain.ranking.UserProgress;
+import com.example.sa_project.domain.ranking.UserProgressRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

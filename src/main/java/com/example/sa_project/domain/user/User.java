@@ -1,6 +1,6 @@
 package com.example.sa_project.domain.user;
 
-import com.example.sa_project.domain.mission.UserProgress;
+import com.example.sa_project.domain.ranking.UserProgress;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

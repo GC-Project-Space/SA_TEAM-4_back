@@ -14,10 +14,10 @@ import com.example.sa_project.api.service.mission.response.RewardResponse;
 import com.example.sa_project.api.service.mission.response.mission.MissionProgress;
 import com.example.sa_project.domain.mission.MyMission;
 import com.example.sa_project.domain.mission.Mission;
-import com.example.sa_project.domain.mission.UserProgress;
-import com.example.sa_project.domain.mission.repository.AllMissionRepository;
+import com.example.sa_project.domain.ranking.UserProgress;
+import com.example.sa_project.domain.mission.repository.MyMissionRepository;
 import com.example.sa_project.domain.mission.repository.MissionRepository;
-import com.example.sa_project.domain.mission.repository.UserProgressRepository;
+import com.example.sa_project.domain.ranking.UserProgressRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -25,13 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MissionService {
 
-    private final AllMissionRepository allMissionRepository;
+    private final MyMissionRepository myMissionRepository;
     private final CompleteMissionRepository completeMissionRepository;
     private final MissionRepository missionRepository;
     private final UserProgressRepository uProgressRepository;
 
     public ProgressResponse getMissionProgress(Long userId) {
-        List<MyMission> myMissions = allMissionRepository.findByUserId(userId);
+        List<MyMission> myMissions = myMissionRepository.findByUserId(userId);
         System.out.println("All Missions: " + myMissions);
 
         List<Integer> completedMissionIds = completeMissionRepository.findByUserId(userId).stream()
@@ -93,8 +93,8 @@ public class MissionService {
     }
 
     public ResetResponse resetMissions(Long userId){
-        List<MyMission> allUserMissions = allMissionRepository.findByUserId(userId);
-        allMissionRepository.deleteAll(allUserMissions);
+        List<MyMission> allUserMissions = myMissionRepository.findByUserId(userId);
+        myMissionRepository.deleteAll(allUserMissions);
 
         List<CompleteMission> completeMissions = completeMissionRepository.findByUserId(userId);
         completeMissionRepository.deleteAll(completeMissions);
@@ -106,7 +106,7 @@ public class MissionService {
 
         for (Mission mission : randomMissions){
             MyMission newMission = new MyMission(userId, mission.getMissionId());
-            allMissionRepository.save(newMission);
+            myMissionRepository.save(newMission);
         }
 
         return new ResetResponse("success");

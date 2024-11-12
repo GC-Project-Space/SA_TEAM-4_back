@@ -1,11 +1,8 @@
-package com.example.sa_project.domain.mission.repository;
+package com.example.sa_project.domain.ranking;
 
-import com.example.sa_project.api.service.ranking.response.UserProgressDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import com.example.sa_project.domain.mission.UserProgress;
 
 import java.util.List;
 
