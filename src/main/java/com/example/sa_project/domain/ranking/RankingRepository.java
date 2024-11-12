@@ -1,11 +1,12 @@
 package com.example.sa_project.domain.ranking;
 
-import com.example.sa_project.api.service.ranking.response.UserProgressDTO;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.example.sa_project.api.service.ranking.response.UserProgressDTO;
 
 @Repository
 public interface RankingRepository extends JpaRepository<UserProgressEntity, Long> {
