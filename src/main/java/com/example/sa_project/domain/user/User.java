@@ -22,5 +22,9 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    @Enumerated(EnumType.STRING)
+    private Major major;
+
+
     // Getters and Setters
 }

@@ -1,11 +1,13 @@
 package com.example.sa_project.api.service.ranking.response;
 
-public class UserProgressDTO {
-    public  String name; //user name && major name
-    public Integer experience_points;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public UserProgressDTO(String Name, Long experiencePoints) {
-        this.name = Name;
-        this.experience_points = Math.toIntExact(experiencePoints);
-    }
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserProgressDTO {
+    public  Long id; //user name && major name
+    public Integer experience_points;
 }

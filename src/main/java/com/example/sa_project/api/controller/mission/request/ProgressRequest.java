@@ -10,5 +10,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProgressRequest { 
-    private String userId;
+    private Long userId;
 }

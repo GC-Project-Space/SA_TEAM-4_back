@@ -9,5 +9,5 @@ import com.example.sa_project.domain.mission.CompleteMission;
 
 @Repository
 public interface CompleteMissionRepository extends JpaRepository<CompleteMission, Integer>{
-    List<CompleteMission> findByUserId(String userId);
+    List<CompleteMission> findByUserId(Long userId);
 }

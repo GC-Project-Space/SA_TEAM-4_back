@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ClearRequest {
-    private String userId;
+    private Long userId;
     private int missionId;
 }

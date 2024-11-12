@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,23 +21,19 @@ import com.example.sa_project.domain.mission.repository.AllMissionRepository;
 import com.example.sa_project.domain.mission.repository.CompleteMissionRepository;
 import com.example.sa_project.domain.mission.repository.MissionRepository;
 import com.example.sa_project.domain.mission.repository.UserProgressRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class MissionService {
 
-    @Autowired
-    private AllMissionRepository allMissionRepository;
+    private final AllMissionRepository allMissionRepository;
+    private final CompleteMissionRepository completeMissionRepository;
+    private final MissionRepository missionRepository;
+    private final UserProgressRepository uProgressRepository;
 
-    @Autowired
-    private CompleteMissionRepository completeMissionRepository;
-
-    @Autowired
-    private MissionRepository missionRepository;
-
-    @Autowired
-    private UserProgressRepository uProgressRepository;
-
-    public ProgressResponse getMissionProgress(String userId) {
+    public ProgressResponse getMissionProgress(Long userId) {
         List<AllMission> allMissions = allMissionRepository.findByUserId(userId);
         System.out.println("All Missions: " + allMissions);
 
@@ -58,7 +55,7 @@ public class MissionService {
         return new ProgressResponse("success", missions);
     }
 
-    public ClearResponse clearMission(String userId, int missionId){
+    public ClearResponse clearMission(Long userId, int missionId){
         Mission mission = missionRepository.findById(missionId).orElse(null);
 
         if(mission == null){
@@ -73,7 +70,7 @@ public class MissionService {
         return new ClearResponse("success", missionProgress);
     }
 
-    public RewardResponse rewardUser(String userId){
+    public RewardResponse rewardUser(Long userId){
         UserProgress userProgress = uProgressRepository.findById(userId).orElse(null);
 
         if(userProgress == null){
@@ -98,7 +95,7 @@ public class MissionService {
         return rewardResponse;
     }
 
-    public ResetResponse resetMissions(String userId){
+    public ResetResponse resetMissions(Long userId){
         List<AllMission> allUserMissions = allMissionRepository.findByUserId(userId);
         allMissionRepository.deleteAll(allUserMissions);
 

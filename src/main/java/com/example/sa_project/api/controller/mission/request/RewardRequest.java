@@ -10,5 +10,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RewardRequest {
-    private String userId;
+    private Long userId;
 }

@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "complete_mission")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,7 +17,7 @@ import lombok.Setter;
 public class CompleteMission {
     
     @Column(name="user_id")
-    private String userId;
+    private Long userId;
 
     @Id
     @Column(name="mission_id")
