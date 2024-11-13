@@ -1,6 +1,5 @@
 package com.example.sa_project.Ranking;
 
-import com.example.sa_project.Entity.UserProgressEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +19,7 @@ public class RankingService {
         return RankingRepository.findAllWithUserInfoSorted();
     }
 
-    public List<UserProgressDTO> getMajorRankings() {
+    public List<MajorProgressDTO> getMajorRankings() {
         return RankingRepository.findMajorInfoSorted();
     }
 

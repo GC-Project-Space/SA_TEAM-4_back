@@ -1,11 +1,15 @@
 package com.example.sa_project.Ranking;
 
-public class UserProgressDTO {
-    public  String name; //user name && major name
-    public Integer experience_points;
+import lombok.Data;
 
-    public UserProgressDTO(String Name, Long experiencePoints) {
-        this.name = Name;
-        this.experience_points = Math.toIntExact(experiencePoints);
+@Data
+public class UserProgressDTO {
+    private String name; // user name
+    private long experiencePoints;
+
+    // 생성자에 major 필드 추가
+    public UserProgressDTO(String name, long experiencePoints) {
+        this.name = name;
+        this.experiencePoints = experiencePoints;
     }
 }
