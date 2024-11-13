@@ -5,11 +5,11 @@ import lombok.Data;
 @Data
 public class UserProgressDTO {
     private String name; // user name
-    private long experiencePoints;
+    private Long experiencePoints;
 
     // 생성자에 major 필드 추가
-    public UserProgressDTO(String name, long experiencePoints) {
-        this.name = name;
-        this.experiencePoints = experiencePoints;
+    public UserProgressDTO(String username, Long experiencePoint) {
+        this.name = username;
+        this.experiencePoints = experiencePoint;
     }
 }

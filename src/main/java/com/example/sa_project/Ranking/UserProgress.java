@@ -22,6 +22,7 @@ public class UserProgress {
     private User user;
 
 
+    //이거 자료형...
     @Column(name = "experiencePoint")
-    private int experiencePoint;
+    private Long experiencePoint;
 }
