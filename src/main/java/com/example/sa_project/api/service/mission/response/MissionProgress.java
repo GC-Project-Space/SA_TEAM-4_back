@@ -1,4 +1,4 @@
-package com.example.sa_project.api.service.mission.response.mission;
+package com.example.sa_project.api.service.mission.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

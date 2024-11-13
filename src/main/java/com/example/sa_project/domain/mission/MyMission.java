@@ -7,9 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -18,12 +15,16 @@ import java.util.List;
 public class MyMission {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "missionId")
     private Mission missionId;
 
-    @OneToMany(mappedBy = "user")
-    private List<User> userId = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User userId;
 
     private boolean isCompleted;
 }

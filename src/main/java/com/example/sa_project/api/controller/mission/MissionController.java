@@ -35,11 +35,6 @@ public class MissionController {
         return missionService.clearMission(request.getUserId(), request.getMissionId());
     }
 
-    @PostMapping("/reward")
-    public RewardResponse getMethodName(@RequestBody RewardRequest request) {
-        return missionService.rewardUser(request.getUserId());
-    }
-
     @PostMapping("/reset")
     public ResetResponse postMethodName(@RequestBody ResetRequest request) {
         return missionService.resetMissions(request.getUserId());
