@@ -12,9 +12,6 @@ public interface UserProgressRepository extends JpaRepository<UserProgress, Long
     @Query("SELECT u FROM UserProgress u ORDER BY u.experiencePoint DESC")
     List<UserProgress> findAllWithUserInfoSorted();
 
-//    @Query("SELECT u, SUM(u.experiencePoint) FROM UserProgress u GROUP BY u.major ORDER BY SUM(u.experiencePoint) DESC")
-//    List<UserProgress> findMajorInfoSorted();
-
     @Query("SELECT u.major, SUM(up.experiencePoint) FROM UserProgress up JOIN up.user u GROUP BY u.major ORDER BY SUM(up.experiencePoint) DESC")
     List<Object[]> findMajorInfoSorted();
 

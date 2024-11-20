@@ -22,7 +22,7 @@ import com.example.sa_project.api.service.mission.response.RewardResponse;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/mission")
+@RequestMapping("api/mission")
 public class MissionController {
 
     private final MissionService missionService;

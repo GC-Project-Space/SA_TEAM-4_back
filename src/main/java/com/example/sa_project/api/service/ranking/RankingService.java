@@ -18,7 +18,6 @@ import java.util.List;
 public class RankingService {
 
     private final UserProgressRepository userProgressRepository;
-
     public List<UserProgressDTO> getAllRankings() {
         List<UserProgress> allWithUserInfoSorted = userProgressRepository.findAllWithUserInfoSorted();
         List<UserProgressDTO> array = new ArrayList<>();

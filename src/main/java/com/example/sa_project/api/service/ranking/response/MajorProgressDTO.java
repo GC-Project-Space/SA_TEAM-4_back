@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MajorProgressDTO {
+//    private int rank;
     private String major;
     public Long experience_points;
 }
