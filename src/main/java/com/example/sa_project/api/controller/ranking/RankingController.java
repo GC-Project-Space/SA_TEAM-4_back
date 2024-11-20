@@ -1,6 +1,7 @@
 package com.example.sa_project.api.controller.ranking;
 
 import com.example.sa_project.api.service.ranking.RankingService;
+import com.example.sa_project.api.service.ranking.response.MajorProgressDTO;
 import com.example.sa_project.api.service.ranking.response.UserProgressDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class RankingController {
     private final RankingService rankingService;
 
     @GetMapping("/major")
-    public List<UserProgressDTO> getMajorRanking() {
+    public List<MajorProgressDTO> getMajorRanking() {
         return rankingService.getMajorRankings();
     }
     @GetMapping("/all")
