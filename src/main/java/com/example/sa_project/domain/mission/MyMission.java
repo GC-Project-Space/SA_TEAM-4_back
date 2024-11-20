@@ -1,6 +1,6 @@
 package com.example.sa_project.domain.mission;
 
-import com.example.sa_project.domain.user.Member;
+import com.example.sa_project.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,12 +19,12 @@ public class MyMission {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "missionId")
-    private Mission missionId;
+    @JoinColumn(name = "mission_id")
+    private Mission mission;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private Member memberId;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private boolean isCompleted;
 }

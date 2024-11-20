@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import com.example.sa_project.api.service.mission.response.ClearResponse;
@@ -16,25 +16,19 @@ import com.example.sa_project.domain.mission.MyMission;
 import com.example.sa_project.domain.mission.Mission;
 import com.example.sa_project.domain.mission.MyMissionRepository;
 import com.example.sa_project.domain.mission.MissionRepository;
-import com.example.sa_project.domain.user.Member;
-import com.example.sa_project.domain.user.MemberRepository;
+import com.example.sa_project.domain.user.User;
+import com.example.sa_project.domain.user.UserRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class MissionService {
 
     private final MyMissionRepository myMissionRepository;
     private final MissionRepository missionRepository;
-    private final MemberRepository memberRepository;
-
-    @Autowired
-    public MissionService(MyMissionRepository myMissionRepository, MissionRepository missionRepository, MemberRepository memberRepository) {
-        this.myMissionRepository = myMissionRepository;
-        this.missionRepository = missionRepository;
-        this.memberRepository = memberRepository;
-    }
+    private final UserRepository userRepository;
 
     public ProgressResponse getMissionProgress(Long userId) {
         List<MyMission> myMissions = myMissionRepository.findByUserId(userId);
@@ -43,7 +37,7 @@ public class MissionService {
 
         for(MyMission mission : myMissions){
             boolean isCompleted = mission.isCompleted();
-            Mission missionEntity = mission.getMissionId();
+            Mission missionEntity = mission.getMission();
 
             MissionProgress missionProgress = new MissionProgress(
                 missionEntity.getTitle(),
@@ -58,7 +52,7 @@ public class MissionService {
 
     public ClearResponse clearMission(Long userId, int missionId){
         MyMission myMission = myMissionRepository.findById(missionId).orElse(null);
-        String missinName = myMission.getMissionId().getTitle();
+        String missinName = myMission.getMission().getTitle();
 
         myMission.setCompleted(true);
         myMissionRepository.save(myMission);
@@ -72,7 +66,7 @@ public class MissionService {
     }
 
     public ResetResponse resetMissions(Long userId){
-        Member member = memberRepository.findById(userId).orElse(null);
+        User user = userRepository.findById(userId).orElse(null);
 
         List<MyMission> myMissions = myMissionRepository.findByUserId(userId);
         myMissionRepository.deleteAll(myMissions);
@@ -84,8 +78,8 @@ public class MissionService {
 
         for(Mission misson : randMissions){
             MyMission newMission = new MyMission();
-            newMission.setMemberId(member);
-            newMission.setMissionId(misson);
+            newMission.setUser(user);
+            newMission.setMission(misson);
             newMission.setCompleted(false);
             myMissionRepository.save(newMission);
     }

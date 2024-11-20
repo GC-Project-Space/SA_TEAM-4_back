@@ -1,5 +1,6 @@
 package com.example.sa_project.api.controller.mission;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,10 +21,11 @@ import com.example.sa_project.api.service.mission.response.RewardResponse;
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/mission")
 public class MissionController {
-    @Autowired
-    private MissionService missionService;
+
+    private final MissionService missionService;
 
     @GetMapping("/progress")
     public ProgressResponse getMethodName(@RequestBody ProgressRequest request) {

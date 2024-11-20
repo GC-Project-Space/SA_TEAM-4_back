@@ -1,10 +1,7 @@
 package com.example.sa_project.domain.ranking;
 
-import com.example.sa_project.domain.user.Member;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import com.example.sa_project.domain.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +15,12 @@ import lombok.Setter;
 public class UserProgress {
 
     @Id
-    @OneToOne(mappedBy = "userProgress")
-    @JoinColumn(name = "user_id")
-    private Member member;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키 생성 전략 추가
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false, unique = true) // user_id는 외래 키
+    private User user;
 
     private int experiencePoint;
 }
