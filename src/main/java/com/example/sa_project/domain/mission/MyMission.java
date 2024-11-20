@@ -1,6 +1,6 @@
 package com.example.sa_project.domain.mission;
 
-import com.example.sa_project.domain.user.User;
+import com.example.sa_project.domain.user.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +24,7 @@ public class MyMission {
 
     @ManyToOne
     @JoinColumn(name = "userId")
-    private User userId;
+    private Member memberId;
 
     private boolean isCompleted;
 }

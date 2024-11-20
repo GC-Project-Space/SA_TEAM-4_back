@@ -16,8 +16,8 @@ import com.example.sa_project.domain.mission.MyMission;
 import com.example.sa_project.domain.mission.Mission;
 import com.example.sa_project.domain.mission.MyMissionRepository;
 import com.example.sa_project.domain.mission.MissionRepository;
-import com.example.sa_project.domain.user.User;
-import com.example.sa_project.domain.user.UserRepository;
+import com.example.sa_project.domain.user.Member;
+import com.example.sa_project.domain.user.MemberRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,13 +27,13 @@ public class MissionService {
 
     private final MyMissionRepository myMissionRepository;
     private final MissionRepository missionRepository;
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public MissionService(MyMissionRepository myMissionRepository, MissionRepository missionRepository, UserRepository userRepository) {
+    public MissionService(MyMissionRepository myMissionRepository, MissionRepository missionRepository, MemberRepository memberRepository) {
         this.myMissionRepository = myMissionRepository;
         this.missionRepository = missionRepository;
-        this.userRepository = userRepository;
+        this.memberRepository = memberRepository;
     }
 
     public ProgressResponse getMissionProgress(Long userId) {
@@ -72,7 +72,7 @@ public class MissionService {
     }
 
     public ResetResponse resetMissions(Long userId){
-        User user = userRepository.findById(userId).orElse(null);
+        Member member = memberRepository.findById(userId).orElse(null);
 
         List<MyMission> myMissions = myMissionRepository.findByUserId(userId);
         myMissionRepository.deleteAll(myMissions);
@@ -84,7 +84,7 @@ public class MissionService {
 
         for(Mission misson : randMissions){
             MyMission newMission = new MyMission();
-            newMission.setUserId(user);
+            newMission.setMemberId(member);
             newMission.setMissionId(misson);
             newMission.setCompleted(false);
             myMissionRepository.save(newMission);

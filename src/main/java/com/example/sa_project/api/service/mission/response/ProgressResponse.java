@@ -2,8 +2,6 @@ package com.example.sa_project.api.service.mission.response;
 
 import java.util.List;
 
-import com.example.sa_project.api.service.mission.response.mission.MissionProgress;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

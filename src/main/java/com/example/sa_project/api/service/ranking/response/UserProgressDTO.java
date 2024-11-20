@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserProgressDTO {
-    public  Long id; //user name && major name
+    public Long id; //user name && major name
     public Integer experience_points;
 }
