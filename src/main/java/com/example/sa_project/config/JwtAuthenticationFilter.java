@@ -1,7 +1,11 @@
 package com.example.sa_project.config;
 
+import com.example.sa_project.domain.user.User;
+import com.example.sa_project.domain.user.UserRepository;
 import com.example.sa_project.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +22,12 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+@Log4j2
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
+    private final UserRepository userRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -35,6 +41,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
             username = jwtUtil.extractUsername(token);
+            User user = userRepository.findByUsername(username).orElseThrow();
+            Long userId = user.getId();
+            log.info("[Log] : username : " + username + " token : " + token + " userId : " + userId);
+
+            // CustomUserDetails 객체 생성하여 SecurityContext에 설정
+            CustomUserDetails customUserDetails = new CustomUserDetails(user);
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                    customUserDetails, null, customUserDetails.getAuthorities());
+            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
 
         // SecurityContext에 인증되지 않은 경우 인증 진행
