@@ -2,6 +2,7 @@ package com.example.sa_project.api.controller.mission;
 
 import com.example.sa_project.config.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import com.example.sa_project.api.service.mission.response.RewardResponse;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/mission")
+@Log4j2
 public class MissionController {
 
     private final MissionService missionService;
@@ -38,6 +40,7 @@ public class MissionController {
     @PostMapping("/clear")
     public ClearResponse getMethodName(@AuthenticationPrincipal CustomUserDetails customUserDetails,@RequestBody ClearRequest request) {
         Long userId = customUserDetails.getUserId();
+        log.info(request.toString());
         return missionService.clearMission(userId, request.getMissionId());
     }
 

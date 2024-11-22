@@ -50,20 +50,33 @@ public class MissionService {
         return new ProgressResponse("success", missionProgresses);
     }
 
-    public ClearResponse clearMission(Long userId, int missionId){
-        MyMission myMission = myMissionRepository.findById(missionId).orElse(null);
-        String missinName = myMission.getMission().getTitle();
+    public ClearResponse clearMission(Long userId, int missionId) {
+        // userId와 missionId에 해당하는 MyMission을 찾기
+        MyMission myMission = myMissionRepository.findByUserIdAndMissionId(userId, missionId)
+                .orElseThrow(() -> new RuntimeException("MyMission not found for userId: " + userId + " and missionId: " + missionId));
 
+        // Mission이 null인 경우 처리
+        if (myMission.getMission() == null) {
+            throw new RuntimeException("Mission not found for MyMission with id: " + missionId);
+        }
+
+        // 미션 이름 가져오기
+        String missionName = myMission.getMission().getTitle();
+
+        // 미션 완료 처리
         myMission.setCompleted(true);
         myMissionRepository.save(myMission);
 
+        // MissionProgress 생성
         MissionProgress missionProgress = new MissionProgress(
-            missinName, 
-            missionId, 
-            true);
+                missionName,
+                missionId,
+                true
+        );
 
-        return new ClearResponse("success",  missionProgress);
+        return new ClearResponse("success", missionProgress);
     }
+
 
     public ResetResponse resetMissions(Long userId){
         User user = userRepository.findById(userId).orElse(null);
