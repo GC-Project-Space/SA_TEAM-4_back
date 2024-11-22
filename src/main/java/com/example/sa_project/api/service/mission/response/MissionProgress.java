@@ -11,4 +11,5 @@ public class MissionProgress {
     private String missionName;
     private int missionId;
     private boolean isCleared;
+    private String coordinate;
 }

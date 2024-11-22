@@ -19,4 +19,6 @@ public class Mission {
 
     private String title;
 
+    private String coordinate;
+
 }

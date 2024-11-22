@@ -40,10 +40,11 @@ public class MissionService {
             Mission missionEntity = mission.getMission();
 
             MissionProgress missionProgress = new MissionProgress(
-                missionEntity.getTitle(),
-                missionEntity.getMissionId(),
-                isCompleted);
-            
+                    missionEntity.getTitle(),
+                    missionEntity.getMissionId(),
+                    isCompleted,
+                    missionEntity.getCoordinate());
+
             missionProgresses.add(missionProgress);
         }
 
@@ -69,9 +70,10 @@ public class MissionService {
 
         // MissionProgress 생성
         MissionProgress missionProgress = new MissionProgress(
-                missionName,
-                missionId,
-                true
+                myMission.getMission().getTitle(),
+                myMission.getMission().getMissionId()
+                ,true,
+                myMission.getMission().getCoordinate()
         );
 
         return new ClearResponse("success", missionProgress);
