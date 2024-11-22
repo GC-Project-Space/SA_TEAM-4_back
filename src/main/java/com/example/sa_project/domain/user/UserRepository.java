@@ -1,5 +1,6 @@
 package com.example.sa_project.domain.user;
 
+import lombok.Data;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
