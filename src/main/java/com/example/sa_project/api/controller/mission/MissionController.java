@@ -1,7 +1,9 @@
 package com.example.sa_project.api.controller.mission;
 
+import com.example.sa_project.config.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,18 +30,21 @@ public class MissionController {
     private final MissionService missionService;
 
     @GetMapping("/progress")
-    public ProgressResponse getMethodName(@RequestBody ProgressRequest request) {
-        return missionService.getMissionProgress(request.getUserId());
+    public ProgressResponse getMethodName(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        Long userId = customUserDetails.getUserId();
+        return missionService.getMissionProgress(userId);
     }
 
     @PostMapping("/clear")
-    public ClearResponse getMethodName(@RequestBody ClearRequest request) {
-        return missionService.clearMission(request.getUserId(), request.getMissionId());
+    public ClearResponse getMethodName(@AuthenticationPrincipal CustomUserDetails customUserDetails,@RequestBody ClearRequest request) {
+        Long userId = customUserDetails.getUserId();
+        return missionService.clearMission(userId, request.getMissionId());
     }
 
     @PostMapping("/reset")
-    public ResetResponse postMethodName(@RequestBody ResetRequest request) {
-        return missionService.resetMissions(request.getUserId());
+    public ResetResponse postMethodName(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        Long userId = customUserDetails.getUserId();
+        return missionService.resetMissions(userId);
     }
     
     

@@ -5,8 +5,10 @@ import com.example.sa_project.api.controller.user.request.UserRequest;
 import com.example.sa_project.api.service.user.UserService;
 import com.example.sa_project.api.service.user.response.UserResponseNoToken;
 import com.example.sa_project.api.service.user.response.UserResponse;
+import com.example.sa_project.config.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,9 +35,17 @@ public class UserController {
         return ResponseEntity.ok(login);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<UserResponseNoToken> getUserById(@PathVariable("userId") Long userId) {
+    @GetMapping("/myService")
+    public ResponseEntity<UserResponseNoToken> getUserById(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        Long userId = customUserDetails.getUserId();
         return ResponseEntity.ok(userService.findByID(userId));
+    }
+
+    @GetMapping("/user-info")
+    public String getUserInfo(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        // CustomUserDetails에서 userId 가져오기
+        Long userId = customUserDetails.getUserId();
+        return "User ID: " + userId;
     }
 
 }
