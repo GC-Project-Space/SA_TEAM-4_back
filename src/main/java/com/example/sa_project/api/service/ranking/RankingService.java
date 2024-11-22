@@ -50,14 +50,14 @@ public class RankingService {
     }
 
     public void saveUserProgress(SetProgressDTO setProgressDTO) {
-        //user 가져옴
+        // 유저 정보 가져오기
         User user = userRepository.findById(setProgressDTO.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + setProgressDTO.getUserId()));
 
-        //해당 유저 userprogress이미 있나..
+        // 해당 유저의 UserProgress가 이미 있는지 확인
         UserProgress userProgress = userProgressRepository.findByUser(user).orElse(null);
 
-        //있으면 experience 값만 갱신 없으면 하나 만듦
+        // 존재하면 experience 값만 갱신, 없으면 새로 생성
         if (userProgress != null) {
             userProgress.setExperiencePoint(setProgressDTO.getExperience_points());
         } else {
@@ -66,8 +66,10 @@ public class RankingService {
             userProgress.setExperiencePoint(setProgressDTO.getExperience_points());
         }
 
+        // 저장 (기존 레코드가 있다면 업데이트, 없다면 새로 생성됨)
         userProgressRepository.save(userProgress);
     }
+
 
 
 }
