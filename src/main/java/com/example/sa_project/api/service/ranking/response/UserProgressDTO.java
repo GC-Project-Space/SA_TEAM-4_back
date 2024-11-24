@@ -11,4 +11,5 @@ public class UserProgressDTO {
     public Long id;
     public String name;
     public Integer experience_points;
+    public String symbol;
 }

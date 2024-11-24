@@ -19,4 +19,20 @@ public class UserProgress {
     private User user;
 
     private int experiencePoint;
+
+    @Transient
+    private String symbol;
+
+    public String getSymbol() {
+        if (this.experiencePoint >= 0 && this.experiencePoint < 100) {
+            return "무당이";
+        } else if (this.experiencePoint >= 100 && this.experiencePoint < 200) {
+            return "무당짱";
+        } else if (this.experiencePoint >= 200 && this.experiencePoint < 300) {
+            return "무당왕";
+        } else if (this.experiencePoint >= 300) {
+            return "무당갓";
+        }
+        return null;
+    }
 }

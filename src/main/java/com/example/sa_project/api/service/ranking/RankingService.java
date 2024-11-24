@@ -38,7 +38,7 @@ public class RankingService {
     }
 
     private UserProgressDTO entityToDto(UserProgress userProgress) {
-        return new UserProgressDTO(userProgress.getUser().getId(),userProgress.getUser().getUsername() ,userProgress.getExperiencePoint());
+        return new UserProgressDTO(userProgress.getUser().getId(),userProgress.getUser().getUsername() ,userProgress.getExperiencePoint(), userProgress.getSymbol());
     }
 
     private MajorProgressDTO entityToDto(Object[] userProgress) {
@@ -65,7 +65,7 @@ public class RankingService {
             userProgress.setUser(user);
             userProgress.setExperiencePoint(setProgressDTO.getExperience_points());
         }
-
+        
         // 저장 (기존 레코드가 있다면 업데이트, 없다면 새로 생성됨)
         userProgressRepository.save(userProgress);
     }
