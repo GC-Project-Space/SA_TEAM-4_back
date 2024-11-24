@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserProgressDTO {
     public Long id;
+    public String name;
     public Integer experience_points;
 }

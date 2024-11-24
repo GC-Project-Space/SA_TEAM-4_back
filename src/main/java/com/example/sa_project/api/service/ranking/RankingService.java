@@ -38,7 +38,7 @@ public class RankingService {
     }
 
     private UserProgressDTO entityToDto(UserProgress userProgress) {
-        return new UserProgressDTO(userProgress.getUser().getId(), userProgress.getExperiencePoint());
+        return new UserProgressDTO(userProgress.getUser().getId(),userProgress.getUser().getUsername() ,userProgress.getExperiencePoint());
     }
 
     private MajorProgressDTO entityToDto(Object[] userProgress) {
