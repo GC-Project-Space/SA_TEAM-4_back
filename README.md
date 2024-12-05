@@ -74,8 +74,8 @@
 ## 5.3 Backend
 |  |  |  |
 |-----------------|-----------------|-----------------|
-| SpringBoot    |  <img src="https://github.com/user-attachments/assets/1694e458-9bb0-4a0b-8fe6-8efc6e675fa1" alt="Firebase" width="100">    | 3.3.4  |
-| SpringSecurity    |  <img src="https://github.com/user-attachments/assets/1694e458-9bb0-4a0b-8fe6-8efc6e675fa1" alt="Firebase" width="100">    |  |
+| SpringBoot    |  <img src="https://github.com/user-attachments/assets/43d80a85-2060-4475-95a8-fc402f837aa0" alt="SpringBoot" width="100">    | 3.3.4  |
+| SpringSecurity    |  <img src="https://github.com/user-attachments/assets/7eafc435-a1b9-47ab-bbc2-6ac02d21a4f0" alt="SpringSecurity" width="100">    |  |
 
 <br/>
 
