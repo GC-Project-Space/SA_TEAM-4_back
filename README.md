@@ -245,4 +245,4 @@ UI개발을 위한 라이브러리 styled-components 설치
 <br/>
 
 # 11. 수행 결과
-<img width="100%" alt="서버 작동" src="<img width="835" alt="스크린샷 2024-12-05 14 57 55" src="https://github.com/user-attachments/assets/a04af810-8457-43a0-987f-430ecb4a6b06">">
+<img width="835" alt="스크린샷 2024-12-05 14 57 55" src="https://github.com/user-attachments/assets/a04af810-8457-43a0-987f-430ecb4a6b06">
